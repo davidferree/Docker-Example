@@ -24,6 +24,12 @@ WORKDIR /source/src
 RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
     dotnet publish -a ${TARGETARCH/amd64/x64} --use-current-runtime --self-contained false -o /app
 
+# Multi-staging:: Setup Development Build?
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine AS Development
+# COPY . /source
+# WORKDIR /source/src
+# CMD dotnet run --no-launch-profile
+
 # If you need to enable globalization and time zones:
 # https://github.com/dotnet/dotnet-docker/blob/main/samples/enable-globalization.md
 ################################################################################

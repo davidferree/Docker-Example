@@ -12,12 +12,12 @@ public class IndexModel : PageModel
         public IndexModel(ILogger<IndexModel> logger, myWebApp.Data.SchoolContext context)
         {
             _logger = logger;
-            _context= context;
+            _context = context;
         }
 
         public void OnGet()
         {
             var s =_context.Students?.Where(d=>d.ID==1).FirstOrDefault();
-            this.StudentName = $"{s?.FirstMidName} {s?.LastName}";
+            this.StudentName = $"{s?.LastName}, {s?.FirstMidName}";
         }
     }
